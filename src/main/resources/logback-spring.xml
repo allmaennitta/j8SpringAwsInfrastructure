@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} PROTO %-5level %msg *** %c{3.} [%thread]%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="TIME_BASED_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>./logs/none.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- rollover daily -->
+            <fileNamePattern>./logs/none.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>2GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} NONE [%thread] %-5level %c{3.} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <springProfile name="!prod"><!-- NOT prod -->
+        <logger name="de.allmaennitta.java.aws.infrastructure.config.aws.metrics" level="DEBUG"
+                additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+
+        <logger name="com.amazonaws" level="INFO" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+        <logger name="com.amazonaws.auth.AWSCredentialsProviderChain" level="DEBUG" additivity="true">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+        <logger name="org.springframework.cloud.aws.messaging" level="INFO" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+        <logger name="de.allaennitta" level="INFO" additivity="false">
+            <appender-ref ref="STDOUT"/>
+        </logger>
+    </springProfile>
+
+
+    <springProfile name="prod">
+        <root level="WARN">
+            <appender-ref ref="STDOUT"/>
+            <!--<appender-ref ref="TIME_BASED_FILE"/>-->
+        </root>
+    </springProfile>
+    <springProfile name="!prod">
+        <root level="INFO">
+            <appender-ref ref="STDOUT"/>
+            <!--<appender-ref ref="TIME_BASED_FILE"/>-->
+        </root>
+    </springProfile>
+
+</configuration>

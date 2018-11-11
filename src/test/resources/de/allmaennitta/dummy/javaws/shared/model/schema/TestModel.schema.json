@@ -1,0 +1,24 @@
+{
+  "type" : "object",
+  "id" : "shared:model:TestModel",
+  "properties" : {
+    "foo" : {
+      "type" : "string"
+    },
+    "bar" : {
+      "type" : "string"
+    },
+    "baz" : {
+      "type" : "string"
+    },
+    "boz" : {
+      "type" : "string"
+    },
+    "one" : {
+      "type" : "string"
+    },
+    "errorMessage" : {
+      "type" : "string"
+    }
+  }
+}

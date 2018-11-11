@@ -1,0 +1,53 @@
+Configuration:
+  status: WARN
+  name: YAMLConfig
+  properties:
+    property:
+      name: pattern
+      value: XXX %d{dd HH:mm:ss.SSS} NONE [%thread] %-5level %logger{10} *** %msg%n%ex
+  thresholdFilter:
+    level: INFO
+  appenders:
+    Console:
+      name: STDOUT
+      PatternLayout:
+        Pattern: ${pattern}
+#    File:
+#      name: File
+#      fileName: ${filename}
+#      PatternLayout:
+#        Pattern: "%d %p %C{1.} [%t] %m%n"
+#      Filters:
+#        ThresholdFilter:
+#          level: ERROR
+  Loggers:
+    logger:
+      -
+        name: com.amazonaws
+        level: INFO
+        additivity: false
+        AppenderRef:
+          ref: STDOUT
+      -
+        name: com.amazonaws.auth
+        level: DEBUG
+        additivity: false
+        AppenderRef:
+          ref: STDOUT
+      -
+        name: org.springframework.cloud.aws.messaging
+        level: INFO
+        additivity: false
+        AppenderRef:
+          ref: STDOUT
+      -
+        name: de.allmaennitta
+        level: DEBUG
+        additivity: false
+        AppenderRef:
+          ref: STDOUT
+
+    Root:
+      level: error
+      AppenderRef:
+        ref: STDOUT

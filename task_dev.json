@@ -1,0 +1,77 @@
+{
+  "executionRoleArn": null,
+  "containerDefinitions": [
+    {
+      "dnsSearchDomains": null,
+      "logConfiguration": null,
+//      "logConfiguration": {
+//        "logDriver": "awslogs",
+//        "options": {
+//          "awslogs-group": "aaa",
+//          "awslogs-region": "bbb",
+//          "awslogs-stream-prefix": "main"
+//        }
+//      },
+      "entryPoint": null,
+      "portMappings": [],
+      "command": null,
+      "linuxParameters": null,
+      "cpu": 0,
+      "environment": [
+        {
+          "name": "SPRING_PROFILES_ACTIVE",
+          "value": "dev"
+        },
+        {
+          "name": "QUEUES_IN",
+          "value": "aaa"
+        },
+        {
+          "name": "QUEUES_OUT",
+          "value": "bbb"
+        }
+      ],
+      "ulimits": null,
+      "dnsServers": null,
+      "mountPoints": [
+        {
+          "readOnly": null,
+          "containerPath": "/logs",
+          "sourceVolume": "logs"
+        }
+      ],
+      "workingDirectory": null,
+      "dockerSecurityOptions": null,
+      "memory": 500,
+      "memoryReservation": null,
+      "volumesFrom": [],
+      "image": "aaa.dkr.ecr.bbb.amazonaws.com/ccc:latest",
+      "disableNetworking": null,
+      "healthCheck": null,
+      "essential": true,
+      "links": null,
+      "hostname": null,
+      "extraHosts": null,
+      "user": null,
+      "readonlyRootFilesystem": null,
+      "dockerLabels": null,
+      "privileged": null,
+      "name": "ccc"
+    }
+  ],
+  "memory": null,
+  "taskRoleArn": "arn:aws:iam::aaa:role/bbb",
+  "family": "ccc-task",
+  "requiresCompatibilities": [],
+  "networkMode": null,
+  "cpu": null,
+  "volumes": [
+    {
+      "name": "logs",
+      "host": {
+        "sourcePath": "/home/ec2-user/logs"
+      }
+    }
+  ],
+  "placementConstraints": []
+}

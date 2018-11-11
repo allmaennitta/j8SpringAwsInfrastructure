@@ -1,0 +1,12 @@
+{
+  "executionRoleArn": null,
+  "containerDefinitions": [
+    {
+      "dnsSearchDomains": null,
+      "logConfiguration": {
+        "logDriver": "none"
+      }
+    }
+    //...
+  ]
+}

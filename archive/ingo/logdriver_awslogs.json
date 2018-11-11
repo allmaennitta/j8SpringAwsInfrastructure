@@ -1,0 +1,58 @@
+{
+  "executionRoleArn": null,
+  "containerDefinitions": [
+    {
+      "dnsSearchDomains": null,
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "aaa",
+          "awslogs-region": "eu-central-1",
+          "awslogs-stream-prefix": "main"
+        }
+      },
+      "entryPoint": null,
+      "portMappings": [],
+      "command": null,
+      "linuxParameters": null,
+      "cpu": 0,
+      "environment": [
+        {
+          "name": "QUEUES_OUT",
+          "value": "aaa"
+        },
+        {
+          "name": "QUEUES_IN",
+          "value": "bbb"
+        }
+      ],
+      "ulimits": null,
+      "dnsServers": null,
+      "mountPoints": [],
+      "workingDirectory": null,
+      "dockerSecurityOptions": null,
+      "memory": 128,
+      "memoryReservation": null,
+      "volumesFrom": [],
+      "image": "1234.dkr.ecr.eu-central-1.amazonaws.com/none:latest",
+      "disableNetworking": null,
+      "essential": true,
+      "links": null,
+      "hostname": null,
+      "extraHosts": null,
+      "user": null,
+      "readonlyRootFilesystem": null,
+      "dockerLabels": null,
+      "privileged": null,
+      "name": "none-container"
+    }
+  ],
+  "memory": null,
+  "taskRoleArn": "arn:aws:iam::1234:role/ecs-sqs-full-access",
+  "family": "none-task",
+  "requiresCompatibilities": null,
+  "networkMode": null,
+  "cpu": null,
+  "volumes": [],
+  "placementConstraints": []
+}
